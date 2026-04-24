@@ -15,11 +15,11 @@ const model = new ChatOpenAI({
     topP: openaiLlmTopP
 });
 
-const systemPrompt = `Given the following block of text, provide a short summary and 3 key action items.`;
+const systemPrompt = `Given the following block of text, provide a short summary and up to 3 key action items.`;
 
 const responseFormat = z.object({
     summary: z.string().describe("A short summary"),
-    actionItems: z.array(z.string()).max(3).describe("A list of 3 key action items")
+    actionItems: z.array(z.string()).max(3).describe("A list of up to 3 key action items")
 });
 
 const agent = createAgent({
